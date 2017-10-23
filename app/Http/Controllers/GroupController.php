@@ -105,6 +105,12 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        //
+        if ($group->canDestroy()) {
+            $group->delete();
+            Session::flash('message', 'Successfully deleted!');
+        } else {
+            Session::flash('error-message', 'Fail to delete group');
+        }
+        return Redirect::to('groups');
     }
 }

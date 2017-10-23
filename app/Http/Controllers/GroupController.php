@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 
 class GroupController extends Controller
@@ -28,7 +32,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return View::make('groups.create');
     }
 
     /**
@@ -39,7 +43,24 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required|unique:groups',
+            'description' => 'required',
+        ];
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::to('groups/create')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $group = new Group();
+            $group->name = Input::get('name');
+            $group->description = Input::get('description');
+            $group->save();
+            Session::flash('message', 'Seccessfully created!');
+            return Redirect::to('groups');
+        }
+
     }
 
     /**

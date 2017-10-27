@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -57,7 +58,7 @@ class GroupController extends Controller
             $group->name = Input::get('name');
             $group->description = Input::get('description');
             $group->save();
-            Session::flash('message', 'Seccessfully created!');
+            Session::flash('message', Lang::get('t.success_group_created'));
             return Redirect::to('groups');
         }
     }
@@ -108,7 +109,7 @@ class GroupController extends Controller
             $group->name = Input::get('name');
             $group->description = Input::get('description');
             $group->save();
-            Session::flash('message', 'Seccessfully updated!');
+            Session::flash('message', Lang::get('t.success_group_updated'));
             return Redirect::to('groups');
         }
     }

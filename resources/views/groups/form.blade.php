@@ -2,7 +2,7 @@
 
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ URL::to('groups') }}">View All'groups</a></li>
+            <li><a href="{{ URL::to('groups') }}">@lang('t.view_all_groups')</a></li>
         </ul>
     </nav>
 
@@ -16,7 +16,7 @@
     {{ Form::open(array('url' => 'groups')) }}
 
     <div class="form-group {{ !empty($errors->first('name')) ? 'has-error' : '' }}">
-        {{ Form::label('name', 'Name') }}
+        {{ Form::label('name', Lang::get('t.name')) }}
         {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
         @if (!empty($errors->first('name')))
             <small class="text-danger">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="form-group {{ !empty($errors->first('description')) ? 'has-error' : '' }}">
-        {{ Form::label('description', 'Description') }}
+        {{ Form::label('description', Lang::get('t.description')) }}
         {{ Form::text('description', Input::old('description'), array('class' => 'form-control')) }}
         @if (!empty($errors->first('description')))
             <small class="text-danger">

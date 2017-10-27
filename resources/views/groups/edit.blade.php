@@ -1,7 +1,9 @@
 <?php
-    $formMethod = "PUT";
-    $formTitle = "Update form";
-    $submitTitle = "Update";
+use Illuminate\Support\Facades\Lang;
+
+$formMethod = "PUT";
+    $formTitle = Lang::get('t.updateGroup');
+    $submitTitle = Lang::get('t.update');
 ?>
 
 @extends('layouts.app')

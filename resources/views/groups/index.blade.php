@@ -5,17 +5,14 @@
     <div class="container">
 
         <nav class="navbar navbar-inverse">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="{{ URL::to('groups') }}">Group Alert</a>
-            </div>
             <ul class="nav navbar-nav">
-                <li><a href="{{ URL::to('groups') }}">View All'groups</a></li>
-                <li><a href="{{ URL::to('groups/create') }}">Create a Group</a>
-                <li><a href="{{ URL::to('groups/manage') }}">Manage</a>
+                <li><a href="{{ URL::to('groups') }}">@lang('t.view_all_groups')</a></li>
+                <li><a href="{{ URL::to('groups/create') }}">@lang('t.createGroup')</a>
+                <li><a href="{{ URL::to('groups/manage') }}">@lang('t.manage')</a>
             </ul>
         </nav>
 
-        <h1>All the'groups</h1>
+        <h1>@lang('t.all_groups')</h1>
 
         <!-- will be used to show any messages -->
         @if (Session::has('message'))
@@ -29,9 +26,9 @@
             <thead>
             <tr>
                 <td>ID</td>
-                <td>Name</td>
-                <td>Description</td>
-                <td colspan="3">Control</td>
+                <td>@lang('t.name')</td>
+                <td>@lang('t.description')</td>
+                <td colspan="3">@lang('t.control')</td>
             </tr>
             </thead>
             <tbody>
@@ -43,15 +40,15 @@
 
                     <!-- we will also add show, edit, and delete buttons -->
                     <td>
-                        <a class="btn btn-small btn-success" href="{{ URL::to('groups/' . $value->id) }}">Show this Group</a>
+                        <a class="btn btn-small btn-success" href="{{ URL::to('groups/' . $value->id) }}">@lang('t.group_show')</a>
                     </td>
                     <td>
-                        <a class="btn btn-small btn-info" href="{{ URL::to('groups/' . $value->id . '/edit') }}">Edit this Group</a>
+                        <a class="btn btn-small btn-info" href="{{ URL::to('groups/' . $value->id . '/edit') }}">@lang('t.group_edit')</a>
                     </td>
                     <td>
                         {{ Form::open(array('url' => 'groups/' . $value->id, 'class' => 'pull-left', 'onsubmit' => 'return confirmDelete()')) }}
                             {{ Form::hidden('_method', 'DELETE') }}
-                            {{ Form::submit('Delete this Group', array('class' => 'btn btn-warning')) }}
+                            {{ Form::submit(Lang::get('t.group_delete'), array('class' => 'btn btn-warning')) }}
                         {{ Form::close() }}
                     </td>
                 </tr>

@@ -1,7 +1,7 @@
 <?php
     $formMethod = "POST";
-    $formTitle = "Create form";
-    $submitTitle = "Create";
+    $formTitle = Lang::get('t.createGroup');
+    $submitTitle = Lang::get('t.create');
 ?>
 
 @extends('layouts.app')

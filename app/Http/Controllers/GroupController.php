@@ -60,7 +60,6 @@ class GroupController extends Controller
             Session::flash('message', 'Seccessfully created!');
             return Redirect::to('groups');
         }
-
     }
 
     /**
@@ -82,7 +81,9 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        echo "Edit page";
+        return View::make('groups.edit', [
+            'group' => $group
+        ]);
     }
 
     /**
@@ -94,7 +95,22 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'description' => 'required',
+        ];
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::to('groups/' . $group->id . '/edit')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $group->name = Input::get('name');
+            $group->description = Input::get('description');
+            $group->save();
+            Session::flash('message', 'Seccessfully updated!');
+            return Redirect::to('groups');
+        }
     }
 
     /**

@@ -6,7 +6,6 @@
 
         <nav class="navbar navbar-inverse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ URL::to('groups') }}">@lang('t.view_all_groups')</a></li>
                 <li><a href="{{ URL::to('groups/create') }}">@lang('t.createGroup')</a>
                 <li><a href="{{ URL::to('groups/manage') }}">@lang('t.manage')</a>
             </ul>

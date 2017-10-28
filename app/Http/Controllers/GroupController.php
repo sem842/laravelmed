@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
@@ -129,5 +130,29 @@ class GroupController extends Controller
             Session::flash('error-message', 'Fail to delete group');
         }
         return Redirect::to('groups');
+    }
+
+    public function manage() {
+        return view('groups.manage', [
+           'groups' => Group::All(),
+           'users' => User::All()
+        ]);
+    }
+
+    public function assign() {
+        $user_id = Input::get('user_id');
+        $group_id = Input::get('group_id');
+
+        $user = User::find($user_id);
+        $group = Group::find($group_id);
+
+        if ($user && $group) {
+            $user->group_id = $group_id;
+            $user->save();
+            Session::flash('message', "Successfully assigned group!");
+        } else {
+            Session::flash('error-message', "Fail to assign group!");
+        }
+        return Redirect::to('groups/manage');
     }
 }

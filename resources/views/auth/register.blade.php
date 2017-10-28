@@ -39,6 +39,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">@lang('t.group')</label>
+
+                            <div class="col-md-6">
+                                <select name="group_id">
+                                        <option value="0">@lang('t.not_set')</option>
+                                    @foreach($groups as $group)
+                                        <option value="{{ $group->id }}"> {{ $group->description }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('group_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('group_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">@lang('t.password')</label>
 

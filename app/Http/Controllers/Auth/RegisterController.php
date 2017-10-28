@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Group;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -51,6 +52,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'group_id' => 'required|integer',
         ]);
     }
 
@@ -62,10 +64,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //var_dump($data);die;
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'group_id' => $data['group_id'],
             'password' => bcrypt($data['password']),
+        ]);
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('auth.register', [
+            'groups' => Group::All()
         ]);
     }
 }

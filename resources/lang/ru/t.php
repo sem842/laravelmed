@@ -14,6 +14,7 @@ return [
     'remember_me' => 'Запомнить меня',
 
     /* ===Groups=== */
+    'group' => 'Группа',
     'group_show' => 'Просмотр группы',
     'group_edit' => 'Изменить группу',
     'group_delete' => 'Удалить группу',
@@ -35,5 +36,6 @@ return [
     'manage' => 'Управление',
     'createGroup' => 'Создание группы',
     'updateGroup' => 'Изменение группы',
+    'not_set' => 'Не назначено',
 
 ];

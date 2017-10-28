@@ -1,4 +1,3 @@
-{{-- TODO:localization --}}
 @extends('layouts.app')
 
 @section('content')
@@ -7,8 +6,8 @@
         <nav class="navbar navbar-inverse">
             <ul class="nav navbar-nav">
                 <li><a href="{{ URL::to('groups') }}">@lang('t.view_all_groups')</a></li>
-                <li><a href="{{ URL::to('groups/create') }}">@lang('t.adasd')</a>
-                <li><a href="{{ URL::to('groups/manage') }}">@lang('t.asdas')</a>
+                <li><a href="{{ URL::to('groups/create') }}">@lang('t.group_create')</a>
+                <li><a href="{{ URL::to('groups/manage') }}">@lang('t.manage')</a>
             </ul>
         </nav>
 

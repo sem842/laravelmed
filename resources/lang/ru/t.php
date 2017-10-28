@@ -15,7 +15,9 @@ return [
 
     /* ===Groups=== */
     'group' => 'Группа',
+    'groups' => 'Группы',
     'group_show' => 'Просмотр группы',
+    'group_create' => 'Создание группы',
     'group_edit' => 'Изменить группу',
     'group_delete' => 'Удалить группу',
     'success_group_created' => 'Группа создана успешно',

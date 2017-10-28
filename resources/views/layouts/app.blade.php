@@ -53,6 +53,10 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="/groups">@lang('t.groups')</a>
+                                    </li>
+
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

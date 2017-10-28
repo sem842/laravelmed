@@ -8,6 +8,11 @@ class Group extends Model
 {
     public function canDestroy()
     {
-        return false;
+        return $this->users->isEmpty();
+    }
+
+    public function users()
+    {
+        return $this->hasMany('App\User');
     }
 }

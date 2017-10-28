@@ -38,3 +38,5 @@
 {{ Form::submit($submitTitle, array('class' => 'btn btn-primary')) }}
 
 {{ Form::close() }}
+
+</div>

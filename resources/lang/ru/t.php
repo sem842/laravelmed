@@ -40,5 +40,8 @@ return [
     'createGroup' => 'Создание группы',
     'updateGroup' => 'Изменение группы',
     'not_set' => 'Не назначено',
+    'home' => 'Главная',
+    'dashboard' => 'Лента',
+    'you_are_logged_in' => 'Вы вошли в систему',
 
 ];

@@ -15,4 +15,9 @@ class Group extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    public function medService()
+    {
+        return $this->hasMany('App\MedService');
+    }
 }

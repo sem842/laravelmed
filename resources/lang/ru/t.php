@@ -30,9 +30,22 @@ return [
     /* ===Users=== */
     'user_manage' => 'Управление пользователями',
 
+    /* ===Med Services=== */
+    'med_services' => 'Услуги',
+    'med_services_create' => 'Создание услуги',
+    'med_services_all' => 'Все услуги',
+    'med_services_show' => 'Просмотр услуги',
+    'med_services_edit' => 'Изменение услуги',
+    'med_services_update' => 'Обновление услуги',
+    'med_services_delete' => 'Удаление услуги',
+    'med_services_create_success' => 'Услуга создана успешно',
+    'med_services_update_success' => 'Услуга обновлена успешно',
+    'med_services_delete_fail' => 'Ошибка удаления услуги',
+    'med_services_delete_success' => 'Услуга удалена успешно',
+
     /**/
-    'id' => 'Идентификатор',
-    'name' => 'Имя',
+    'id' => 'ID',
+    'name' => 'Наименование',
     'description' => 'Описание',
     'control' => 'Действие',
     'create' => 'Создать',

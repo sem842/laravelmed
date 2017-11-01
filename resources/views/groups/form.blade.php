@@ -13,6 +13,7 @@
     @else
         {{ Form::open(array('url' => 'groups')) }}
     @endif
+
     {{ Form::open(array('url' => 'groups')) }}
 
     <div class="form-group {{ !empty($errors->first('name')) ? 'has-error' : '' }}">
@@ -35,8 +36,8 @@
         @endif
     </div>
 
-{{ Form::submit($submitTitle, array('class' => 'btn btn-primary')) }}
+    {{ Form::submit($submitTitle, array('class' => 'btn btn-primary')) }}
 
-{{ Form::close() }}
+    {{ Form::close() }}
 
 </div>

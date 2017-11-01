@@ -37,8 +37,7 @@
                         {{ Form::model(array('method' => 'POST')) }}
                         {{ Form::hidden('user_id', $user->id) }}
                         <select onchange="this.form.submit()" name="group_id">
-                            <option value="0" {{$user->group_id == 0 ? "selected='selected'" : '' }} > Не назначено
-                            </option>
+                            <option value="0" {{$user->group_id == 0 ? "selected='selected'" : '' }}>@lang('t.not_set')</option>
                             @foreach($groups as $group)
                                 <option value="{{ $group->id }}" {{ $group->id == $user->group_id ? "selected='selected'" : '' }} > {{ $group->description }}</option>
                             @endforeach

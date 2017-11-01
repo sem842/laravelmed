@@ -1,8 +1,6 @@
 <?php
-use Illuminate\Support\Facades\Lang;
-
-$formMethod = "PUT";
-    $formTitle = Lang::get('t.updateGroup');
+    $formMethod  = "PUT";
+    $formTitle   = Lang::get('t.updateGroup');
     $submitTitle = Lang::get('t.update');
 ?>
 

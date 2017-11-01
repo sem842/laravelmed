@@ -20,4 +20,6 @@ Route::get('/groups/manage', 'GroupController@manage');
 Route::post('/groups/manage', 'GroupController@assign');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('groups', 'GroupController');
+Route::resource('medservices', 'MedServiceController');
+
 

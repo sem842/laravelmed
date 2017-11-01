@@ -40,7 +40,7 @@ class GroupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -67,18 +67,20 @@ class GroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Group  $group
+     * @param  \App\Group $group
      * @return \Illuminate\Http\Response
      */
     public function show(Group $group)
     {
-        echo "Show page";
+        return View::make('groups.show', [
+            'group' => $group
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Group  $group
+     * @param  \App\Group $group
      * @return \Illuminate\Http\Response
      */
     public function edit(Group $group)
@@ -91,8 +93,8 @@ class GroupController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Group  $group
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Group $group
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Group $group)
@@ -118,7 +120,7 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Group  $group
+     * @param  \App\Group $group
      * @return \Illuminate\Http\Response
      */
     public function destroy(Group $group)
@@ -132,14 +134,16 @@ class GroupController extends Controller
         return Redirect::to('groups');
     }
 
-    public function manage() {
+    public function manage()
+    {
         return view('groups.manage', [
-           'groups' => Group::All(),
-           'users' => User::All()
+            'groups' => Group::All(),
+            'users' => User::All()
         ]);
     }
 
-    public function assign() {
+    public function assign()
+    {
         $user_id = Input::get('user_id');
         $group_id = Input::get('group_id');
 

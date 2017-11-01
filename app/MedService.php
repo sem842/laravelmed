@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class MedService extends Model
 {
+    public function canDestroy()
+    {
+        return true;
+    }
+
     public function group()
     {
-        $this->belongsTo('App\Group');
+        return $this->belongsTo('App\Group');
     }
 }

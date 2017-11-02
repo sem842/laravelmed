@@ -21,9 +21,9 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $groups = Group::all();
+        $allGroups = Group::all();
         return View::make('groups.index', [
-            'groups' => $groups
+            'allGroups' => $allGroups
         ]);
     }
 
@@ -59,7 +59,7 @@ class GroupController extends Controller
             $group->name = Input::get('name');
             $group->description = Input::get('description');
             $group->save();
-            Session::flash('message', Lang::get('t.success_group_created'));
+            Session::flash('message', Lang::get('t.group_create_success'));
             return Redirect::to('groups');
         }
     }
@@ -112,7 +112,7 @@ class GroupController extends Controller
             $group->name = Input::get('name');
             $group->description = Input::get('description');
             $group->save();
-            Session::flash('message', Lang::get('t.success_group_updated'));
+            Session::flash('message', Lang::get('t.group_update_success'));
             return Redirect::to('groups');
         }
     }
@@ -127,9 +127,9 @@ class GroupController extends Controller
     {
         if ($group->canDestroy()) {
             $group->delete();
-            Session::flash('message', 'Successfully deleted!');
+            Session::flash('message', Lang::get('t.group_delete_success'));
         } else {
-            Session::flash('error-message', 'Fail to delete group');
+            Session::flash('error-message', Lang::get('t.group_delete_fail'));
         }
         return Redirect::to('groups');
     }

@@ -21,9 +21,9 @@ class MedServiceController extends Controller
      */
     public function index()
     {
-        $medService = MedService::all();
+        $allServices = MedService::all();
         return View::make('medservices.index', [
-            'medService' => $medService
+            'allServices' => $allServices
         ]);
     }
 
@@ -34,9 +34,9 @@ class MedServiceController extends Controller
      */
     public function create()
     {
-        $groups = Group::all();
+        $allGroups = Group::all();
         return View::make('medservices.create', [
-            'groups' => $groups
+            'allGroups' => $allGroups
         ]);
     }
 
@@ -70,26 +70,26 @@ class MedServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\MedService $medService
+     * @param  \App\MedService $medservice
      * @return \Illuminate\Http\Response
      */
-    public function show(MedService $medService)
+    public function show(MedService $medservice)
     {
         return view('medservices.show', [
-            'medService' => $medService,
+            'medService' => $medservice
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\MedService $medService
+     * @param  \App\MedService $medservice
      * @return \Illuminate\Http\Response
      */
-    public function edit(MedService $medService)
+    public function edit(MedService $medservice)
     {
         return View::make('medservices.edit', [
-            'medService' => $medService,
+            'medService' => $medservice,
             'groups' => Group::all(),
         ]);
     }
@@ -98,23 +98,23 @@ class MedServiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\MedService $medService
+     * @param  \App\MedService $medservice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MedService $medService)
+    public function update(Request $request, MedService $medservice)
     {
         $rules = [
             'name' => 'required'
         ];
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-            return Redirect::to('medservices/' . $medService->id . '/edit')
+            return Redirect::to('medservices/' . $medservice->id . '/edit')
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $medService->name = Input::get('name');
-            $medService->group_id = Input::get('group_id');
-            $medService->save();
+            $medservice->name = Input::get('name');
+            $medservice->group_id = Input::get('group_id');
+            $medservice->save();
             Session::flash('message', Lang::get('t.med_services_update_success'));
             return Redirect::to('medservices');
         }
@@ -123,13 +123,13 @@ class MedServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\MedService $medService
+     * @param  \App\MedService $medservice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MedService $medService)
+    public function destroy(MedService $medservice)
     {
-        if ($medService->canDestroy()) {
-            $medService->delete();
+        if ($medservice->canDestroy()) {
+            $medservice->delete();
             Session::flash('message', Lang::get('t.med_services_delete_success'));
         } else {
             Session::flash('error-message', Lang::get('t.med_services_delete_fail'));

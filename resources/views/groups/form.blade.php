@@ -2,7 +2,7 @@
 
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li><a href="{{ URL::to('groups') }}">@lang('t.view_all_groups')</a></li>
+            <li><a href="{{ URL::to('groups') }}">@lang('t.groups_view_all')</a></li>
         </ul>
     </nav>
 

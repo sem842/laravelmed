@@ -16,7 +16,7 @@ class Group extends Model
         return $this->hasMany('App\User');
     }
 
-    public function medService()
+    public function medServices()
     {
         return $this->hasMany('App\MedService');
     }

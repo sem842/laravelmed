@@ -6,12 +6,12 @@
 
         <nav class="navbar navbar-inverse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ URL::to('groups/create') }}">@lang('t.createGroup')</a>
+                <li><a href="{{ URL::to('groups/create') }}">@lang('t.group_create')</a>
                 <li><a href="{{ URL::to('groups/manage') }}">@lang('t.manage')</a>
             </ul>
         </nav>
 
-        <h1>@lang('t.all_groups')</h1>
+        <h1>@lang('t.groups_all')</h1>
 
         <!-- will be used to show any messages -->
         @if (Session::has('message'))
@@ -31,7 +31,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($groups as $key => $value)
+            @foreach($allGroups as $key => $value)
                 <tr>
                     <td>{{ $value->id }}</td>
                     <td>{{ $value->name }}</td>
@@ -56,6 +56,5 @@
         </table>
 
     </div>
-
 
 @endsection

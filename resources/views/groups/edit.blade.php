@@ -1,6 +1,6 @@
 <?php
     $formMethod  = "PUT";
-    $formTitle   = Lang::get('t.updateGroup');
+    $formTitle   = Lang::get('t.group_update');
     $submitTitle = Lang::get('t.update');
 ?>
 

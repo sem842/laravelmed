@@ -27,9 +27,9 @@
         <div class="form-group">
             {{ Form::label('group_id', Lang::get('t.group')) }}
             <select class="form-control" name="group_id">
-                <option value="0">@lang('t.not_set')</option>
+                <option value="{{ $medService->group->id }}">{{ $medService->group->description }}</option>
                 @foreach($groups as $group)
-                    <option value="{{ $group->id }}"> {{ $group->description }}</option>
+                    <option value="{{ $group->id }}">{{ $group->description }}</option>
                 @endforeach
             </select>
         </div>

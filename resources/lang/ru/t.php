@@ -7,25 +7,29 @@ return [
     'login' => 'Вход',
     'logout' => 'Выход',
     'register' => 'Регистрация',
-    'email' => 'E-mail адрес',
+    'email' => 'E-mail',
     'password' => 'Пароль',
     'password_confirm' => 'Повторите пароль',
     'password_forgot' => 'Забыли пароль?',
     'remember_me' => 'Запомнить меня',
+    'you_are_logged_in' => 'Вы вошли в систему',
 
     /* ===Groups=== */
     'group' => 'Группа',
     'groups' => 'Группы',
+    'groups_all' => 'Все группы',
     'group_show' => 'Просмотр группы',
+    'groups_view_all' => 'Просмотр всех групп',
     'group_create' => 'Создание группы',
     'group_edit' => 'Изменить группу',
+    'group_update' => 'Обновление группы',
     'group_delete' => 'Удалить группу',
-    'success_group_created' => 'Группа создана успешно',
-    'success_group_updated' => 'Группа обновлена успешно',
-    'fail_group_created' => 'Ошибка создания группы',
-    'fail_group_updated' => 'Ошибка изменения группы',
-    'all_groups' => 'Все группы',
-    'view_all_groups' => 'Просмотр всех групп',
+    'group_create_success' => 'Группа создана успешно',
+    'group_update_success' => 'Группа обновлена успешно',
+    'group_create_fail' => 'Ошибка создания группы',
+    'group_update_fail' => 'Ошибка изменения группы',
+    'group_delete_fail' => 'Ошибка удаления группы',
+    'group_delete_success' => 'Группа удалена успешно',
 
     /* ===Users=== */
     'user_manage' => 'Управление пользователями',
@@ -43,7 +47,8 @@ return [
     'med_services_delete_fail' => 'Ошибка удаления услуги',
     'med_services_delete_success' => 'Услуга удалена успешно',
 
-    /**/
+    /* ===Not sort yet=== */
+    'back' => 'Назад',
     'id' => 'ID',
     'name' => 'Наименование',
     'description' => 'Описание',
@@ -52,11 +57,7 @@ return [
     'update' => 'Обновить',
     'delete' => 'Удалить',
     'manage' => 'Управление',
-    'createGroup' => 'Создание группы',
-    'updateGroup' => 'Изменение группы',
     'not_set' => 'Не назначено',
     'home' => 'Главная',
     'dashboard' => 'Лента',
-    'you_are_logged_in' => 'Вы вошли в систему',
-
 ];

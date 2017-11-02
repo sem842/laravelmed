@@ -1,6 +1,6 @@
 <?php
     $formMethod  = "POST";
-    $formTitle   = Lang::get('t.createGroup');
+    $formTitle   = Lang::get('t.group_create');
     $submitTitle = Lang::get('t.create');
 ?>
 

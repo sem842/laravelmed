@@ -6,8 +6,8 @@
 
         <nav class="navbar navbar-inverse">
             <ul class="nav navbar-nav">
+                <li><a href="{{ URL::to('medservices') }}">@lang('t.med_services_all')</a></li>
                 <li><a href="{{ URL::to('medservices/create') }}">@lang('t.med_services_create')</a>
-                <li><a href="{{ URL::to('medservices/manage') }}">@lang('t.manage')</a>
             </ul>
         </nav>
 
@@ -31,7 +31,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($medService as $key => $value)
+            @foreach($allServices as $key => $value)
                 <tr>
                     <td>{{ $value->id }}</td>
                     <td>{{ $value->name }}</td>

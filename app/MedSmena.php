@@ -11,8 +11,8 @@ class MedSmena extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function service()
+    public function medService()
     {
-        return $this->belongsTo('App\MedSmena');
+        return $this->belongsTo('App\MedService');
     }
 }

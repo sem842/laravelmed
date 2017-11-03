@@ -35,6 +35,7 @@ return [
     'user_manage' => 'Управление пользователями',
 
     /* ===Med Services=== */
+    'med_service' => 'Услуга',
     'med_services' => 'Услуги',
     'med_services_create' => 'Создание услуги',
     'med_services_all' => 'Все услуги',
@@ -46,6 +47,16 @@ return [
     'med_services_update_success' => 'Услуга обновлена успешно',
     'med_services_delete_fail' => 'Ошибка удаления услуги',
     'med_services_delete_success' => 'Услуга удалена успешно',
+
+    /* ===Med Smenas=== */
+    'med_smena_view_all' => 'Все смены',
+    'med_smena_create' => 'Открыть смену',
+    'med_smena_show' => 'Просмотр смены',
+    'med_smena_edit' => 'Изменить смену',
+    'med_smena_create_success' => 'Смена открыта',
+    'med_smena' => '',
+    'patients_plan' => 'Кол-во пациентов',
+    'med_smena' => '',
 
     /* ===Not sort yet=== */
     'back' => 'Назад',
@@ -60,4 +71,7 @@ return [
     'not_set' => 'Не назначено',
     'home' => 'Главная',
     'dashboard' => 'Лента',
+    'started' => 'Начало',
+    'stopped' => 'Окончание',
+    'status' => 'Статус',
 ];

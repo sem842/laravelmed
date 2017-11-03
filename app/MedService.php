@@ -15,4 +15,9 @@ class MedService extends Model
     {
         return $this->belongsTo('App\Group');
     }
+
+    public function medSmenas()
+    {
+        return $this->hasMany('App\MedSmena');
+    }
 }

@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Group');
     }
+
+    public function medSmenas()
+    {
+        return $this->hasMany('App\MedSmena');
+    }
 }

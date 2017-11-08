@@ -21,38 +21,47 @@
             <div class="alert alert-danger">{{ Session::get('error-message') }}</div>
         @endif
 
-        <table class="table table-striped table-bordered">
-            <thead>
-            <tr>
-                <td>@lang('t.med_service')</td>
-                <td>@lang('t.started')</td>
-                <td>@lang('t.stopped')</td>
-                <td>@lang('t.status')</td>
-                <td colspan="2">@lang('t.control')</td>
-            </tr>
-            </thead>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            @foreach($allSmenas as $key => $smena)
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="{{ "heading" . $key }}">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="{{ "#collapse" . $key }}" aria-expanded="{{ ($key === 0) ? "true" : "false" }}" aria-controls="{{ "collapse" . $key }}">
+                            {{ $smena->medService->name }}
+                        </a>
+                    </h4>
+                </div>
+                <div id="{{ "collapse" . $key }}" class="panel-collapse collapse {{ ($key === 0) ? "in" : false }}" role="tabpanel" aria-labelledby="{{ "heading" . $key }}">
+                    <div class="panel-body">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <td>@lang('t.started')</td>
+                                <td>@lang('t.stopped')</td>
+                                <td>@lang('t.status')</td>
+                                <td colspan="2">@lang('t.control')</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ $smena->started }}</td>
+                                    <td>{{ $smena->stopped }}</td>
+                                    <td>{{ $smena->status }}</td>
 
-            <tbody>
-            @foreach($allSmenas as $smena)
-                <tr>
-                    <td>{{ $smena->medService->name }}</td>
-                    <td>{{ $smena->started }}</td>
-                    <td>{{ $smena->stopped }}</td>
-                    <td>{{ $smena->status }}</td>
-
-                    <!-- we will also add show, edit, and delete buttons -->
-                    <td>
-                        <a class="btn btn-small btn-success"
-                           href="{{ URL::to('medsmenas/' . $smena->id) }}">@lang('t.med_smena_show')</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-small btn-info"
-                           href="{{ URL::to('medsmenas/' . $smena->id . '/edit') }}">@lang('t.med_smena_edit')</a>
-                    </td>
-                </tr>
+                                    <td>
+                                        <a class="btn btn-small btn-success"
+                                           href="{{ URL::to('medsmenas/' . $smena->id) }}">@lang('t.med_smena_show')</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-small btn-info"
+                                           href="{{ URL::to('medsmenas/' . $smena->id . '/edit') }}">@lang('t.med_smena_edit')</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
             @endforeach
-            </tbody>
-
-        </table>
     </div>
 @endsection

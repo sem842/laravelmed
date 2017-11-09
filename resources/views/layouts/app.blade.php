@@ -52,6 +52,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/medsmenas">@lang('t.med_smenas')</a></li>
                                     <li><a href="/groups">@lang('t.groups')</a></li>
                                     <li><a href="/medservices">@lang('t.med_services')</a></li>
 

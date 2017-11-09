@@ -49,12 +49,13 @@ return [
     'med_services_delete_success' => 'Услуга удалена успешно',
 
     /* ===Med Smenas=== */
+    'med_smena' => 'Смена',
+    'med_smenas' => 'Смены',
     'med_smena_view_all' => 'Все смены',
     'med_smena_create' => 'Открыть смену',
     'med_smena_show' => 'Просмотр смены',
     'med_smena_edit' => 'Изменить смену',
     'med_smena_create_success' => 'Смена открыта',
-    'med_smena' => '',
     'patients_plan' => 'Кол-во пациентов',
     'med_smena' => '',
 

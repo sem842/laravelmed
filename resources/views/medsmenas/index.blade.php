@@ -31,7 +31,8 @@
                         </a>
                     </h4>
                 </div>
-                <div id="{{ "collapse" . $key }}" class="panel-collapse collapse {{ ($key === 0) ? "in" : false }}" role="tabpanel" aria-labelledby="{{ "heading" . $key }}">
+                {{--<div id="{{ "collapse" . $key }}" class="panel-collapse collapse {{ ($key === 0) ? "in" : false }}" role="tabpanel" aria-labelledby="{{ "heading" . $key }}">--}}
+                <div id="{{ "collapse" . $key }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ "heading" . $key }}">
                     <div class="panel-body">
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -39,6 +40,7 @@
                                 <td>@lang('t.started')</td>
                                 <td>@lang('t.stopped')</td>
                                 <td>@lang('t.status')</td>
+                                <td>@lang('t.patients_plan')</td>
                                 <td colspan="2">@lang('t.control')</td>
                             </tr>
                             </thead>
@@ -47,6 +49,7 @@
                                     <td>{{ $smena->started }}</td>
                                     <td>{{ $smena->stopped }}</td>
                                     <td>{{ $smena->status }}</td>
+                                    <td>{{ $smena->patients_plan }}</td>
 
                                     <td>
                                         <a class="btn btn-small btn-success"

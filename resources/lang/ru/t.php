@@ -2,6 +2,7 @@
 return [
     /* ===Title=== */
     'title' => 'Поликлиника "Здоровье"',
+    'terminal' => 'Терминал',
 
     /* ===Login/Registration=== */
     'login' => 'Вход',

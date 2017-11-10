@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MedService;
 use App\MedSmena;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +21,25 @@ class MedSmenaController extends Controller
      */
     public function index()
     {
-        return view('medsmenas.index', [
+        $medServices = Auth::user()->group->medServices;
+        $openedSmenas = $this->calcOpenedSmenas($medServices);
+        $possibleMedServices = $this->calcPossibleMedServices($medServices);
+
+        return view('medsmenas.indextwo', [
+            'openSmenas' => $openedSmenas,
+            'possibleMedServices' => $possibleMedServices,
             'allSmenas' => MedSmena::all(),
         ]);
+    }
+
+    private function calcOpenedSmenas()
+    {
+        return null;
+    }
+
+    private function calcPossibleMedServices($medServices)
+    {
+        return $medServices;
     }
 
     /**
@@ -33,7 +50,6 @@ class MedSmenaController extends Controller
     public function create()
     {
         return view('medsmenas.create', [
-            //'medservices' => Auth::user()->group->medServices
             'medservices' => Auth::user()->group->medServices
         ]);
     }

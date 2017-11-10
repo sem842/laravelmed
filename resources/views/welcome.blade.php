@@ -79,15 +79,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    @lang('t.title')
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://laracasts.com">@lang('t.terminal')</a>
+                    <a href="/groups">@lang('t.groups')</a>
+                    <a href="/medservices">@lang('t.med_services')</a>
+                    <a href="/medsmenas">@lang('t.med_smenas')</a>
                 </div>
             </div>
         </div>

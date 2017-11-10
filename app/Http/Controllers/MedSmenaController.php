@@ -23,7 +23,7 @@ class MedSmenaController extends Controller
     {
         $medServices = Auth::user()->group->medServices;
         $openedSmenas = $this->calcOpenedSmenas($medServices);
-        $possibleMedServices = $this->calcPossibleMedServices($medServices);
+        $possibleMedServices = $this->calcPossibleMedServices($medServices, $openedSmenas);
 
         return view('medsmenas.indextwo', [
             'openSmenas' => $openedSmenas,
@@ -32,14 +32,31 @@ class MedSmenaController extends Controller
         ]);
     }
 
-    private function calcOpenedSmenas()
+    private function calcOpenedSmenas($medServices)
     {
-        return null;
+        /* Old method */
+        /*$ids = [];
+        foreach ($medServices as $medService) {
+            $ids[] = $medService->id;
+        }*/
+
+        /* fresh method */
+        $ids = $medServices->map(function($value, $index){
+            return $value->id;
+        });
+        return MedSmena::where([
+            ['user_id', '=', Auth::user()->id],
+            ['status', '=', 1],
+            //['med_service_id', $ids]
+        ])->get();
     }
 
-    private function calcPossibleMedServices($medServices)
+    private function calcPossibleMedServices($medServices, $openedSmenas)
     {
-        return $medServices;
+        $ids = $openedSmenas->map(function($value, $index){
+            return $value->med_service_id;
+        });
+        return $medServices->whereNotIn('id', $ids);
     }
 
     /**
@@ -51,6 +68,13 @@ class MedSmenaController extends Controller
     {
         return view('medsmenas.create', [
             'medservices' => Auth::user()->group->medServices
+        ]);
+    }
+
+    public function createWithService(MedService $medservice)
+    {
+        return view('medsmenas.createtwo', [
+            'medservice' => $medservice,
         ]);
     }
 
@@ -68,17 +92,19 @@ class MedSmenaController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-            return Redirect::to('medsmenas/create')
+            $id = Input::get('med_service_id');
+            return Redirect::to('medsmenas/'.$id.'/create')
                 ->withErrors($validator)
                 ->withInput();
         } else {
             $medSmena = new MedSmena;
-            $medSmena->user_id = Auth::user()->id;
             $medSmena->med_service_id = Input::get('med_service_id');
             $medSmena->patients_plan = Input::get('patients_plan');
+
+            $medSmena->user_id = Auth::user()->id;
             $medSmena->started = date('Y-m-d H:i:s') ;
             $medSmena->stopped = date('Y-m-d H:i:s') ;
-            $medSmena->status = 1;
+            $medSmena->status = 1; //Open
             $medSmena->save();
             Session::flash('message', Lang::get('t.med_smena_create_success'));
             return Redirect::to('medsmenas');

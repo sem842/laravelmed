@@ -67,6 +67,7 @@ return [
     'description' => 'Описание',
     'control' => 'Действие',
     'create' => 'Создать',
+    'close' => 'Закрыть',
     'update' => 'Обновить',
     'delete' => 'Удалить',
     'manage' => 'Управление',

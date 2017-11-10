@@ -21,6 +21,8 @@ Route::post('/groups/manage', 'GroupController@assign');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('groups', 'GroupController');
 Route::resource('medservices', 'MedServiceController');
+
+Route::get('medsmenas/{medservice}/create', 'MedSmenaController@createWithService');
 Route::resource('medsmenas', 'MedSmenaController');
 
 

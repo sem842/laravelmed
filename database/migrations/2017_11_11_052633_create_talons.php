@@ -13,7 +13,12 @@ class CreateTalons extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('talons', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('med_smena_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class CreateTalons extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('talons');
     }
 }

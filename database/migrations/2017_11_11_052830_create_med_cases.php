@@ -13,7 +13,14 @@ class CreateMedCases extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('med_cases', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('talon_id');
+            $table->integer('user_id');
+            $table->integer('med_smena_id');
+            $table->integer('status');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class CreateMedCases extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('med_cases');
     }
 }

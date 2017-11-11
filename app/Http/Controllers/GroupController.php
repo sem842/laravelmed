@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Rules\CustomRule;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
+use Illuminate\Validation\Rule;
 
 class GroupController extends Controller
 {
@@ -46,7 +48,11 @@ class GroupController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name' => 'required|unique:groups',
+            'name' => [
+                'required',
+                'unique:groups',
+                new CustomRule
+            ],
             'description' => 'required',
         ];
         $validator = Validator::make(Input::all(), $rules);
@@ -100,7 +106,10 @@ class GroupController extends Controller
     public function update(Request $request, Group $group)
     {
         $rules = [
-            'name' => 'required',
+            'name' => [
+                'required',
+                Rule::unique('groups')->ignore($group->id),
+            ],
             'description' => 'required',
         ];
         $validator = Validator::make(Input::all(), $rules);

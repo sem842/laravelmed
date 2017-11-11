@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Http\Requests\GroupRequest;
 use App\Rules\CustomRule;
 use App\User;
 use Illuminate\Http\Request;
@@ -45,7 +46,7 @@ class GroupController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GroupRequest $request)
     {
         $rules = [
             'name' => [
@@ -103,7 +104,7 @@ class GroupController extends Controller
      * @param  \App\Group $group
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Group $group)
+    public function update(GroupRequest $request, Group $group)
     {
         $rules = [
             'name' => [

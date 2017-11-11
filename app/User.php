@@ -36,4 +36,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\MedSmena');
     }
+
+    public function medCases()
+    {
+        return $this->hasMany('App\MedCase');
+    }
 }

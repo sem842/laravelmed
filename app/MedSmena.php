@@ -15,4 +15,9 @@ class MedSmena extends Model
     {
         return $this->belongsTo('App\MedService');
     }
+
+    public function medCases()
+    {
+        return $this->hasMany('App\MedCase');
+    }
 }

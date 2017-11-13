@@ -17,6 +17,13 @@ use Illuminate\Validation\Rule;
 
 class GroupController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:manage,App\Group'); //AGroup - name of Policy
+    }
+
     /**
      * Display a listing of the resource.
      *

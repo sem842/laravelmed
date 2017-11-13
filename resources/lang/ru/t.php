@@ -58,13 +58,14 @@ return [
     'med_smena_edit' => 'Изменить смену',
     'med_smena_create_success' => 'Смена открыта',
     'patients_plan' => 'Кол-во пациентов',
-    'med_smena' => '',
+    'med_smena_close' => 'Закрыть смену',
 
     /* ===Not sort yet=== */
     'back' => 'Назад',
     'id' => 'ID',
     'name' => 'Наименование',
     'description' => 'Описание',
+    'cancel' => 'Отмена',
     'control' => 'Действие',
     'create' => 'Создать',
     'close' => 'Закрыть',

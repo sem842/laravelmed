@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 
 class MedSmenaController extends Controller
 {
@@ -102,8 +103,8 @@ class MedSmenaController extends Controller
             $medSmena->patients_plan = Input::get('patients_plan');
 
             $medSmena->user_id = Auth::user()->id;
-            $medSmena->started = date('Y-m-d H:i:s') ;
-            $medSmena->stopped = date('Y-m-d H:i:s') ;
+            $medSmena->started = date('Y-m-d H:i:s');
+            $medSmena->stopped = date('Y-m-d H:i:s');
             $medSmena->status = 1; //Open
             $medSmena->save();
             Session::flash('message', Lang::get('t.med_smena_create_success'));
@@ -130,9 +131,11 @@ class MedSmenaController extends Controller
      * @param  \App\MedSmena  $medSmena
      * @return \Illuminate\Http\Response
      */
-    public function edit(MedSmena $medSmena)
+    public function edit(MedSmena $medsmena)
     {
-        //
+        return View::make('medsmenas.edit', [
+            'medSmena' => $medsmena
+        ]);
     }
 
     /**
@@ -142,9 +145,13 @@ class MedSmenaController extends Controller
      * @param  \App\MedSmena  $medSmena
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MedSmena $medSmena)
+    public function update(Request $request, MedSmena $medsmena)
     {
-        //
+        $medsmena->status = 2; //Close
+        $medsmena->stopped = date('Y-m-d H:i:s');
+        $medsmena->save();
+        Session::flash('message', Lang::get('t.med_smena_close_success'));
+        return Redirect::to('medsmenas');
     }
 
     /**

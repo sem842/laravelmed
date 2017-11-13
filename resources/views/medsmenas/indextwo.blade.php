@@ -30,7 +30,7 @@
                     <td>{{ $smena->medService->name }}</td>
                     <td>{{ $smena->patients_plan }}</td>
                     <td>
-                        <a href="{{ URL::to('medsmenas/' . $smena->id .'/close') }}">@lang('t.close')</a>
+                        <a href="{{ URL::to('medsmenas/' . $smena->id .'/edit') }}">@lang('t.close')</a>
                     </td>
                 </tr>
                 @endforeach

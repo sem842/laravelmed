@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('groups', 'GroupController');
 Route::resource('medservices', 'MedServiceController');
 
-Route::get('medsmenas/{medservice}/create', 'MedSmenaController@createWithService');
+Route::get('medsmenas/{medservice}/create', 'MedSmenaController@createWithService')->middleware('can:create,medservice');
 Route::resource('medsmenas', 'MedSmenaController');
 
 

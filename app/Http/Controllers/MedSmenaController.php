@@ -74,6 +74,7 @@ class MedSmenaController extends Controller
 
     public function createWithService(MedService $medservice)
     {
+
         return view('medsmenas.createtwo', [
             'medservice' => $medservice,
         ]);

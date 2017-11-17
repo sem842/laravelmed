@@ -20,4 +20,9 @@ class MedSmena extends Model
     {
         return $this->hasMany('App\MedCase');
     }
+
+    public function talons()
+    {
+        return $this->hasMany('App\Talon');
+    }
 }

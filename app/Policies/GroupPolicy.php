@@ -10,20 +10,9 @@ class GroupPolicy
     use HandlesAuthorization;
 
     /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Determine whether the user can view the Group.
      *
      * @param  \App\User  $user
-     * @param  \App\Group  $group
      * @return mixed
      */
     public function view(User $user)

@@ -4,12 +4,7 @@
 
     <div class="container">
 
-        <nav class="navbar navbar-inverse">
-            <ul class="nav navbar-nav">
-                <li><a href="{{ URL::to('groups/create') }}">@lang('t.group_create')</a>
-                <li><a href="{{ URL::to('groups/manage') }}">@lang('t.manage')</a>
-            </ul>
-        </nav>
+        @include('layouts.menu')
 
         <h1>@lang('t.groups_all')</h1>
 
@@ -27,7 +22,11 @@
                 <td>ID</td>
                 <td>@lang('t.name')</td>
                 <td>@lang('t.description')</td>
+                @can('manage',App\Group::class)
                 <td colspan="3">@lang('t.control')</td>
+                @elsecan('view',App\Group::class)
+                <td>@lang('t.control')</td>
+                @endcan
             </tr>
             </thead>
             <tbody>
@@ -41,6 +40,7 @@
                     <td>
                         <a class="btn btn-small btn-success" href="{{ URL::to('groups/' . $value->id) }}">@lang('t.group_show')</a>
                     </td>
+                    @can('manage',App\Group::class)
                     <td>
                         <a class="btn btn-small btn-info" href="{{ URL::to('groups/' . $value->id . '/edit') }}">@lang('t.group_edit')</a>
                     </td>
@@ -50,6 +50,7 @@
                             {{ Form::submit(Lang::get('t.group_delete'), array('class' => 'btn btn-warning')) }}
                         {{ Form::close() }}
                     </td>
+                    @endcan
                 </tr>
             @endforeach
             </tbody>

@@ -4,12 +4,7 @@
 
     <div class="container">
 
-        <nav class="navbar navbar-inverse">
-            <ul class="nav navbar-nav">
-                <li><a href="{{ URL::to('medservices') }}">@lang('t.med_services_all')</a></li>
-                <li><a href="{{ URL::to('medservices/create') }}">@lang('t.med_services_create')</a>
-            </ul>
-        </nav>
+        @include('layouts.menu')
 
         <h1>@lang('t.med_services_all')</h1>
 

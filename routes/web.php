@@ -24,5 +24,3 @@ Route::resource('medservices', 'MedServiceController');
 
 Route::get('medsmenas/{medservice}/create', 'MedSmenaController@createWithService')->middleware('can:create,medservice');
 Route::resource('medsmenas', 'MedSmenaController');
-
-

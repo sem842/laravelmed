@@ -18,12 +18,6 @@ use Illuminate\Validation\Rule;
 class GroupController extends Controller
 {
 
-    public function __construct()
-    {
-        //$this->middleware('auth');
-        //$this->middleware('can:manage,App\Group');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +39,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        $this->middleware('can:manage,App\Group');
+        $this->authorize('manage', Group::class);
         return View::make('groups.create');
     }
 
@@ -102,7 +96,7 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        $this->middleware('can:manage,App\Group');
+        $this->authorize('manage', Group::class);
         return View::make('groups.edit', [
             'group' => $group
         ]);
@@ -146,7 +140,7 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        $this->middleware('can:manage,App\Group');
+        $this->authorize('manage', Group::class);
         if ($group->canDestroy()) {
             $group->delete();
             Session::flash('message', Lang::get('t.group_delete_success'));

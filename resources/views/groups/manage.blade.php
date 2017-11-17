@@ -3,13 +3,8 @@
 @section('content')
 
     <div class="container">
-        <nav class="navbar navbar-inverse">
-            <ul class="nav navbar-nav">
-                <li><a href="{{ URL::to('groups') }}">@lang('t.view_all_groups')</a></li>
-                <li><a href="{{ URL::to('groups/create') }}">@lang('t.group_create')</a>
-                <li><a href="{{ URL::to('groups/manage') }}">@lang('t.manage')</a>
-            </ul>
-        </nav>
+
+        @include('layouts.menu')
 
         <h1>@lang('t.user_manage')</h1>
         <!-- will be used to show any messages -->

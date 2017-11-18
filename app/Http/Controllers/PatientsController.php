@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MedCase;
 use App\MedSmena;
 use App\Talon;
 use Illuminate\Http\Request;
@@ -10,11 +11,6 @@ use Illuminate\Support\Facades\Session;
 
 class PatientsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('patients.index', [
@@ -37,7 +33,9 @@ class PatientsController extends Controller
                 $medsmena->medService->group->name,
                 $talonsCount
             );
-            $talon->save();
+            if ($talon->save()) {
+                $this->createMedCase($talon);
+            };
             Session::flash("message", "Талон " . $talon->name . " выдан");
         } else {
             Session::flash("error-message", "Превышен план");
@@ -60,5 +58,15 @@ class PatientsController extends Controller
         $result = substr($result, 0, -(strlen($c)));
         $result .= $c;
         return $result;
+    }
+
+    protected function createMedCase($talon)
+    {
+        $case = new MedCase();
+        $case->talon_id = $talon->id;
+        $case->user_id = $talon->medSmena->user_id;
+        $case->med_smena_id = $talon->med_smena_id;
+        $case->status = 1;
+        $case->save();
     }
 }

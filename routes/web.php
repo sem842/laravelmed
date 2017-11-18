@@ -27,3 +27,6 @@ Route::resource('medsmenas', 'MedSmenaController');
 
 Route::get('/patients', 'PatientsController@index');
 Route::get('/patients/{medsmena}', 'PatientsController@getTalone');
+
+Route::get('/cases', 'MedCaseController@index');
+Route::get('/cases/{medcase}', 'MedCaseController@medCaseDone');

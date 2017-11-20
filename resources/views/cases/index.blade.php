@@ -14,22 +14,25 @@
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
-                <td>@lang('t.talon_id')</td>
+                <td>@lang('t.id')</td>
                 <td>@lang('t.name')</td>
                 <td>@lang('t.med_service')</td>
                 <td>@lang('t.status')</td>
-                <td>@lang('t.control')</td>
+                <td colspan="2">@lang('t.control')</td>
             </tr>
             </thead>
             <tbody>
             @foreach($allCases as $value)
                 <tr>
-                    <td>{{ $value->talon_id }}</td>
-                    <td>{{ $value->user->name }}</td>
+                    <td>{{ $value->talon->id }}</td>
+                    <td>{{ $value->talon->name }}</td>
                     <td>{{ $value->medSmena->medService->name }}</td>
                     <td>{{ $value->status }}</td>
                     <td>
-                        <a class="btn btn-small btn-info" href="{{ URL::to('cases/' . $value->id) }}">@lang('t.done')</a>
+                        <a class="btn btn-small btn-info" href="{{ URL::to('cases/' . $value->id . '/open') }}">@lang('t.open')</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-small btn-success" href="{{ URL::to('cases/' . $value->id . '/close') }}">@lang('t.close')</a>
                     </td>
                 </tr>
             @endforeach

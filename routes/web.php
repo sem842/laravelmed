@@ -29,4 +29,5 @@ Route::get('/patients', 'PatientsController@index');
 Route::get('/patients/{medsmena}', 'PatientsController@getTalone');
 
 Route::get('/cases', 'MedCaseController@index');
-Route::get('/cases/{medcase}', 'MedCaseController@medCaseDone');
+Route::get('/cases/{medcase}/open', 'MedCaseController@medCaseOpen');
+Route::get('/cases/{medcase}/close', 'MedCaseController@medCaseClose');

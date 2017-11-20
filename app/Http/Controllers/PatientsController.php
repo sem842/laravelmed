@@ -33,6 +33,7 @@ class PatientsController extends Controller
                 $medsmena->medService->group->name,
                 $talonsCount
             );
+            $talon->save();
             if ($talon->save()) {
                 $this->createMedCase($talon);
             };
@@ -49,6 +50,7 @@ class PatientsController extends Controller
         $talonsMap = [
             'Cardio' => 'C',
             'Doctor' => 'D',
+            'Therapist' => 'T',
         ];
         if (array_key_exists($groupName, $talonsMap)) {
             $result[0] = $talonsMap[$groupName];

@@ -15,10 +15,11 @@
 </head>
 <body>
 <div id="patients">
-    @yield('content')
+@yield('content')
 </div>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+@yield('watchdog')
 </body>
 </html>

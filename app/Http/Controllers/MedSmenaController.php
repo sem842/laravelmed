@@ -12,9 +12,15 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
+use App\Contracts\WatchDogInterface;
 
 class MedSmenaController extends Controller
 {
+    public function __construct(WatchDogInterface $watchDog)
+    {
+        $this->watchDog = $watchDog;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -108,6 +114,7 @@ class MedSmenaController extends Controller
             $medSmena->stopped = date('Y-m-d H:i:s');
             $medSmena->status = 1; //Open
             $medSmena->save();
+            $this->watchDog->newHash();
             Session::flash('message', Lang::get('t.med_smena_create_success'));
             return Redirect::to('medsmenas');
         }

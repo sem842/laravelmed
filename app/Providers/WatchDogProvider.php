@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
+use App\Services\WatchDog;
 use Illuminate\Support\ServiceProvider;
-use App\Services\SmenaAlg;
 
-class SmenaAlgProvider extends ServiceProvider
+class WatchDogProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -24,8 +24,8 @@ class SmenaAlgProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('App\Contracts\SmenaAlgInterface', function($app) {
-            return new SmenaAlg;
+        $this->app->bind('App\Contracts\WatchDogInterface', function($app) {
+            return new WatchDog;
         });
     }
 }

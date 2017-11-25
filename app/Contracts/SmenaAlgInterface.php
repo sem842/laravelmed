@@ -8,7 +8,7 @@
 
 namespace App\Contracts;
 
-interface ISmenaAlg
+interface SmenaAlgInterface
 {
     public function isAvailableTalon();
     public function calcActiveSmenas();

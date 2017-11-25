@@ -17,3 +17,28 @@
             @endforeach
         </ul>
     </div>
+
+@endsection
+
+@section('watchdog')
+    <script>
+        setInterval(function() {
+            $.ajax({
+                url: '/patients/hash',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    hash: '{{ $watchDogHash }}'
+                },
+                success: function (data) {
+                    if (data == 'doRedirect') {
+                        window.location.href = "/patients";
+                    }
+                },
+                error: function () {
+                    window.location.href = "/patients";
+                }
+            })
+        }, 5000);
+    </script>
+@endsection

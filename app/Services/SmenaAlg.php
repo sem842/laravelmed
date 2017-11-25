@@ -8,10 +8,10 @@
 
 namespace App\Services;
 
-use App\Contracts\ISmenaAlg;
+use App\Contracts\SmenaAlgInterface;
 use App\MedSmena;
 
-class SmenaAlg implements ISmenaAlg
+class SmenaAlg implements SmenaAlgInterface
 {
     public function isAvailableTalon()
     {
@@ -29,10 +29,12 @@ class SmenaAlg implements ISmenaAlg
         $this->smena = $smena;
     }
 
-    /*public function talonsCount()
+    /*
+    public function talonsCount()
     {
         return $this->smena->talons->count();
-    }*/
+    }
+    */
 
     public function generateTalonName()
     {
